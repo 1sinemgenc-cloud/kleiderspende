@@ -1,69 +1,27 @@
-# 🎁 Kleiderspende - Clothing Donation Portal
+# KleiderBruecke Spendenportal
 
-Ein transparentes und benutzerfreundliches Online-Portal für die Registrierung und Weitervermittlung von Kleiderspenden in Krisenregionen.
+Oeffentliches Webportal fuer einen lokalen gemeinnuetzigen Verein, der Kleiderspenden registriert und Spendenden die Auswahl einer aktuellen Krisenregion ermoeglicht.
 
-## 📋 Projektbeschreibung
+## Funktionen
 
-Das Kleiderspende-Portal ermöglicht es Spendenden, ihre Kleidungsspenden selbst zu registrieren und aktiv zu entscheiden, in welche aktuelle Krisenregion ihre Spenden versendet werden sollen. Dies fördert Transparenz, Engagement und Verantwortung in der Spendenorganisation.
+- Titel und Logo fuer `KleiderBruecke`
+- Responsiver Header mit Navigation
+- Auswahl aktueller Krisenregionen
+- Formular zur Registrierung einer Kleiderspende
+- Lokale Demo-Uebersicht der registrierten Spenden
+- Umsetzung mit HTML, Bootstrap 5, CSS und JavaScript
 
-## 🚀 Features
+## Start
 
-- ✅ Benutzerfreundliches Registrierungsportal
-- ✅ Auswahl von Krisenregionen
-- ✅ Transparente Spendenverfolgung
-- ✅ Modernes, responsives Design
-- ✅ Offline-ready Progressive Web App
+Die Datei `index.html` kann direkt im Browser geoeffnet werden.
 
-## 🛠️ Tech Stack
+## GitHub veroeffentlichen
 
-- **Frontend:** React + TypeScript
-- **Styling:** Tailwind CSS
-- **Icons:** Lucide React
-- **Build Tool:** Vite
-- **Package Manager:** npm
+1. Auf GitHub ein neues oeffentliches Repository erstellen, zum Beispiel `kleiderbruecke-spendenportal`.
+2. Diese Projektdateien hochladen.
+3. Optional GitHub Pages aktivieren: `Settings` -> `Pages` -> Branch `main` -> Ordner `/root`.
+4. Danach ist die Webseite oeffentlich erreichbar.
 
-## 📦 Installation
+## Hinweis
 
-```bash
-# Repository klonen
-git clone https://github.com/1sinemgenc-cloud/kleiderspende.git
-cd kleiderspende
-
-# Abhängigkeiten installieren
-npm install
-
-# Development-Server starten
-npm run dev
-
-# Für Production bauen
-npm run build
-```
-
-## 📁 Projektstruktur
-
-```
-kleiderspende/
-├── src/
-│   ├── components/        # React-Komponenten
-│   ├── pages/            # Seiten
-│   ├── styles/           # CSS-Dateien
-│   ├── App.tsx           # Hauptkomponente
-│   └── main.tsx          # Entry Point
-├── public/               # Statische Dateien & Logo
-├── index.html            # HTML-Template
-├── vite.config.ts        # Vite-Konfiguration
-├── tailwind.config.js    # Tailwind-Konfiguration
-└── package.json          # Abhängigkeiten
-```
-
-## 🤝 Beitragen
-
-Beiträge sind willkommen! Bitte erstelle einen Pull Request oder öffne ein Issue.
-
-## 📄 Lizenz
-
-Dieses Projekt steht unter der MIT-Lizenz.
-
-## 👥 Kontakt
-
-Für Fragen oder Vorschläge: [Deine Kontaktinfo hier]
+Die Registrierungen werden fuer die Demo lokal im Browser gespeichert. Fuer einen echten Betrieb sollten Backend, Datenschutzkonzept, Rollenverwaltung und sichere Datenbankanbindung ergaenzt werden.

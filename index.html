@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KleiderBruecke | Spendenportal</title>
+    <meta name="description" content="Oeffentliches Portal zur Registrierung von Kleiderspenden fuer aktuelle Krisenregionen.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg bg-white border-bottom fixed-top">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center gap-2" href="#start" aria-label="KleiderBruecke Startseite">
+            <span class="brand-mark" aria-hidden="true">KB</span>
+            <span>KleiderBruecke</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Navigation oeffnen">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link" href="#start">Start</a></li>
+              <li class="nav-item"><a class="nav-link" href="#regionen">Krisenregionen</a></li>
+              <li class="nav-item"><a class="nav-link" href="#registrieren">Spende registrieren</a></li>
+              <li class="nav-item"><a class="nav-link" href="#uebersicht">Uebersicht</a></li>
+              <li class="nav-item"><a class="nav-link" href="#kontakt">Kontakt</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="start">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Lokaler gemeinnuetziger Verein</p>
+            <h1>Kleiderspenden gezielt dorthin schicken, wo sie gerade gebraucht werden.</h1>
+            <p class="lead">Registriere deine Spende online, waehle eine aktuelle Krisenregion und erhalte eine Bestaetigung fuer die Abgabe vor Ort.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="#registrieren">Spende registrieren</a>
+              <a class="btn btn-outline-dark btn-lg" href="#regionen">Region waehlen</a>
+            </div>
+          </div>
+          <div class="hero-panel" aria-label="Aktueller Spendenstand">
+            <div>
+              <span class="stat-number" id="statDonations">0</span>
+              <span class="stat-label">registrierte Spenden in diesem Browser</span>
+            </div>
+            <div>
+              <span class="stat-number">4</span>
+              <span class="stat-label">aktive Zielregionen</span>
+            </div>
+            <div>
+              <span class="stat-number">48h</span>
+              <span class="stat-label">Sortierung nach Abgabe</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="regionen">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Auswahl der Zielregion</p>
+            <h2>Aktuelle Krisenregionen</h2>
+            <p>Spendende entscheiden selbst, wohin ihre Kleidung versendet werden soll. Die Auswahl kann im Formular direkt uebernommen werden.</p>
+          </div>
+          <div class="region-grid" id="regionCards"></div>
+        </div>
+      </section>
+
+      <section class="section section-muted" id="registrieren">
+        <div class="container form-layout">
+          <div>
+            <p class="eyebrow">Registrierung</p>
+            <h2>Deine Kleiderspende anmelden</h2>
+            <p>Bitte trage die wichtigsten Informationen ein. Nach dem Absenden wird eine lokale Registrierungsnummer erstellt und die Spende in der Uebersicht angezeigt.</p>
+            <div class="process-list" aria-label="Ablauf der Spende">
+              <span>1. Spende beschreiben</span>
+              <span>2. Krisenregion waehlen</span>
+              <span>3. Abgabe bestaetigen</span>
+            </div>
+          </div>
+
+          <form class="donation-form" id="donationForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" id="name" name="name" autocomplete="name" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="email">E-Mail</label>
+                <input class="form-control" id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="phone">Telefon optional</label>
+                <input class="form-control" id="phone" name="phone" autocomplete="tel">
+              </div>
+              <div class="col-12">
+                <fieldset class="method-choice">
+                  <legend>Art der Registrierung</legend>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="handoverType" id="typeOffice" value="office" checked>
+                    <label class="form-check-label" for="typeOffice">Uebergabe an der Geschaeftsstelle</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="handoverType" id="typePickup" value="pickup">
+                    <label class="form-check-label" for="typePickup">Abholung durch Sammelfahrzeug</label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-12" id="officeInfo">
+                <div class="info-box">
+                  <strong>Geschaeftsstelle:</strong> KleiderBruecke e. V., Musterstrasse 12, 12345 Musterstadt
+                </div>
+              </div>
+              <div class="col-12 d-none" id="pickupAddressFields">
+                <div class="address-box">
+                  <div class="row g-3">
+                    <div class="col-md-8">
+                      <label class="form-label" for="street">Strasse und Hausnummer</label>
+                      <input class="form-control" id="street" name="street" autocomplete="street-address">
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label" for="postalCode">Postleitzahl</label>
+                      <input class="form-control" id="postalCode" name="postalCode" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="12345">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="city">Ort</label>
+                      <input class="form-control" id="city" name="city" autocomplete="address-level2">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="pickupDate">Gewuenschtes Abholdatum</label>
+                      <input class="form-control" id="pickupDate" name="pickupDate" type="date">
+                    </div>
+                  </div>
+                  <div class="form-text mt-2">Die Abholung ist moeglich, wenn die ersten beiden Ziffern der PLZ mit der Geschaeftsstelle 12345 uebereinstimmen.</div>
+                  <div class="invalid-feedback d-block d-none" id="postalFeedback">Die Abholadresse liegt nicht in der Naehe der Geschaeftsstelle. Die PLZ muss mit 12 beginnen.</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="category">Art der Kleidung</label>
+                <select class="form-select" id="category" name="category" required>
+                  <option value="">Bitte waehlen</option>
+                  <option>Winterkleidung</option>
+                  <option>Kinderkleidung</option>
+                  <option>Alltagskleidung</option>
+                  <option>Schuhe</option>
+                  <option>Decken und Schlafsaecke</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="amount">Menge</label>
+                <select class="form-select" id="amount" name="amount" required>
+                  <option value="">Bitte waehlen</option>
+                  <option>1 Tasche</option>
+                  <option>2-3 Taschen</option>
+                  <option>1 Karton</option>
+                  <option>Mehrere Kartons</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="region">Zielregion</label>
+                <select class="form-select" id="region" name="region" required></select>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="notes">Hinweise zum Zustand</label>
+                <textarea class="form-control" id="notes" name="notes" rows="4" placeholder="Zum Beispiel: sauber, sortiert, winterfest, Kindergroessen 98-128"></textarea>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="ok" id="consent" required>
+                  <label class="form-check-label" for="consent">Ich bestaetige, dass die Kleidung sauber und tragbar ist.</label>
+                </div>
+              </div>
+              <div class="col-12 d-flex flex-wrap gap-2 align-items-center">
+                <button class="btn btn-primary btn-lg" type="submit">Registrierung abschliessen</button>
+                <button class="btn btn-outline-secondary btn-lg" type="reset">Zuruecksetzen</button>
+              </div>
+              <div class="col-12">
+                <div class="alert alert-success d-none" id="successMessage" role="status"></div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section confirmation-section d-none" id="bestaetigung" aria-live="polite">
+        <div class="container">
+          <div class="confirmation-card">
+            <p class="eyebrow">Registrierung erfolgreich</p>
+            <h2>Danke fuer deine Kleiderspende.</h2>
+            <p>Die folgenden Angaben wurden gespeichert und dienen als Bestaetigung fuer die Abgabe oder Abholung.</p>
+            <dl class="confirmation-list" id="confirmationDetails"></dl>
+            <a class="btn btn-primary btn-lg" href="#registrieren">Weitere Spende registrieren</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="uebersicht">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Lokale Demo-Daten</p>
+            <h2>Registrierte Spenden</h2>
+            <p>Diese Liste wird im Browser gespeichert und demonstriert die spaetere Verwaltungsansicht des Vereins.</p>
+          </div>
+          <div class="table-responsive donation-table-wrap">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Nr.</th>
+                  <th>Name</th>
+                  <th>Kategorie</th>
+                  <th>Menge</th>
+                  <th>Zielregion</th>
+                  <th>Ort</th>
+                </tr>
+              </thead>
+              <tbody id="donationRows"></tbody>
+            </table>
+          </div>
+          <button class="btn btn-outline-danger" id="clearDonations" type="button">Demo-Liste leeren</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="kontakt">
+      <div class="container footer-grid">
+        <div>
+          <a class="navbar-brand d-flex align-items-center gap-2" href="#start">
+            <span class="brand-mark" aria-hidden="true">KB</span>
+            <span>KleiderBruecke</span>
+          </a>
+          <p>Gemeinsam organisieren wir Kleiderspenden transparent, wuerdevoll und zielgerichtet.</p>
+        </div>
+        <address>
+          KleiderBruecke e. V.<br>
+          Musterstrasse 12, 12345 Musterstadt<br>
+          kontakt@kleiderbruecke.example
+        </address>
+        <div class="legal-notice">
+          <strong>Rechtliche Hinweise</strong><br>
+          Impressum: KleiderBruecke e. V., vertreten durch den Vorstand.<br>
+          Datenschutz: Eingaben werden in dieser Demo nur lokal im Browser gespeichert.
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
